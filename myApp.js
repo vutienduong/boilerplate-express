@@ -18,9 +18,9 @@ app.get("/json", (req, res) => {
   res.json({message: message})
 })
 
-app.get("/now", (req, res) => {
+app.get("/now", (req, res, next) => {
   req.time = new Date().toString();
-  next()
+  next();
 }, (req, res) => res.send({time: req.time}));
 
 module.exports = app;
