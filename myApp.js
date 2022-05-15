@@ -8,8 +8,11 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 app.get("/json", (req, res) => {
-  res.json({message: "Hello json"})
+  const mySecret = process.env['MESSAGE_STYLE']
+  const message = mySecret == 'uppercase' ? 'HELLO JSON' : 'Hello json'
+  res.json({message: message})
 })
 
 
 module.exports = app;
+
