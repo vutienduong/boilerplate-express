@@ -4,7 +4,7 @@ let app = express();
 console.log("Hello World");
 // app.use( express.static("public") )
 app.use((req, res, next) => {
-  console.log(`${req.method} - ${req.ip}`);
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
 })
 
