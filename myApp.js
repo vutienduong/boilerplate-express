@@ -3,6 +3,11 @@ let app = express();
 
 console.log("Hello World");
 // app.use( express.static("public") )
+app.use((req, res, next) => {
+  console.log(`${req.method} - ${req.ip}`);
+  next();
+})
+
 app.use('/public', express.static(__dirname + '/public'))
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
