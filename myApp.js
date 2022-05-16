@@ -4,10 +4,10 @@ let app = express();
 
 console.log("Hello World");
 // app.use( express.static("public") )
-app.use(
-  bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: false}))
+
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  console.log(`${req.method} ${req.path} - ${req.ip} - ${req.body}`);
   next();
 })
 
@@ -29,11 +29,12 @@ app.get("/now", (req, res, next) => {
 app.get('/:word/echo', (req, res) => {
   res.json({echo: req.params.word})
 })
-app.route('/name').get((req, res) => {
+app.get('/name', (req, res) => {
   res.json({name: `${req.query.first} ${req.query.last}`})
-}).post((req, res) => {
+})
+
+app.post('/name', (req, res) => {
   res.json({name: `${req.body.first} ${req.body.last}`})
 })
 
 module.exports = app;
-
