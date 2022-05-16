@@ -7,7 +7,7 @@ console.log("Hello World");
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} - ${req.ip} - ${req.body}`);
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
 })
 
